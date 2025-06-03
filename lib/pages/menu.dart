@@ -25,85 +25,41 @@ class MenuPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/introduccion');
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-              child: const Text(
-                'INTRODUCCIÓN',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(height: 12),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/antecedentes');
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-              child: const Text(
-                'ANTECEDENTES',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(height: 12),
-            ElevatedButton(
-  onPressed: () {
-    Navigator.pushNamed(context, '/planos');
-  },
-  style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-  child: const Text(
-    'PLANOS',
-    style: TextStyle(color: Colors.white),
-  ),
-),
-            const SizedBox(height: 12),
-          ElevatedButton(
-  onPressed: () {
-    Navigator.pushNamed(context, '/perth');
-  },
-  style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-  child: const Text(
-    'PERTH',
-    style: TextStyle(color: Colors.white),
-  ),
-),
 
-            const SizedBox(height: 12),
-            ElevatedButton(
-              onPressed: () {
-                // Pendiente implementar
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-              child: const Text(
-                'COSTOS',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(height: 12),
-            ElevatedButton(
-              onPressed: () {
-                // Pendiente implementar
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-              child: const Text(
-                'CÁLCULOS',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            // 🔹 Botones del menú
+            _buildButton(context, 'INTRODUCCIÓN', '/introduccion'),
+            _buildButton(context, 'ANTECEDENTES', '/antecedentes'),
+            _buildButton(context, 'PLANOS', '/planos'),
+            _buildButton(context, 'PERTH', '/perth'),
+            _buildButton(context, 'COSTOS', '/costos'),
+            _buildButton(context, 'CÁLCULOS', '/calculos'),
+            _buildButton(context, 'ESTADÍSTICAS', '/estadisticas'),
+            _buildButton(context, 'HISTORIAL', '/historial'),
+
             const SizedBox(height: 40),
+
+            // 🔙 Botón ATRÁS
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/portada');
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-              child: const Text(
-                'ATRÁS',
-                style: TextStyle(color: Colors.white),
-              ),
+              child: const Text('ATRÁS', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  // 🔧 Widget para evitar repetir código
+  Widget _buildButton(BuildContext context, String label, String route) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: ElevatedButton(
+        onPressed: () => Navigator.pushNamed(context, route),
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
+        child: Text(label, style: const TextStyle(color: Colors.white)),
       ),
     );
   }

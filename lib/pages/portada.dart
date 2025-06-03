@@ -1,3 +1,4 @@
+// 📄 lib/pages/portada_page.dart
 import 'package:flutter/material.dart';
 
 class PortadaPage extends StatelessWidget {
@@ -11,6 +12,7 @@ class PortadaPage extends StatelessWidget {
         title: const Text('PORTADA'),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
+        automaticallyImplyLeading: false, // oculta ícono de menú
       ),
       body: SafeArea(
         child: Stack(
@@ -20,7 +22,7 @@ class PortadaPage extends StatelessWidget {
               child: Text(
                 'ESCUELA SUPERIOR DE INGENIERÍA Y ARQUITECTURA\nUNIDAD ZACATENCO',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
             Align(
@@ -28,7 +30,7 @@ class PortadaPage extends StatelessWidget {
               child: Text(
                 'TÍTULO:\nPERIFÉRICO\n\nREALIZÓ:\n\nMENDOZA SERRALDE JOSÉ GABRIEL\nARROYO RODRÍGUEZ IRAIS CITLALLI\n\nPROFESOR:\nCASTRO MÉNDEZ JAVIER BALDEMAR\n\nGRUPO:\n7CM03',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 14),
+                style: const TextStyle(fontSize: 14, height: 1.5),
               ),
             ),
             Align(
@@ -50,13 +52,14 @@ class PortadaPage extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/menu');
                 },
                 child: const Text(
                   'HAGA CLIC PARA CONTINUAR',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

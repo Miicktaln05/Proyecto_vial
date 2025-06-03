@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'routes.dart';
+import 'controllers/historial_controller.dart';
+import 'controllers/vehiculo_provider.dart';
+// 👇 Paso 3: Importamos la pantalla del menú principal
+import 'pages/menu.dart';
 
 void main() {
-  runApp(const ProyectoVialApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => HistorialController()),
+        ChangeNotifierProvider(create: (_) => VehiculoProvider()),
+      ],
+      child: const ProyectoVialApp(),
+    ),
+  );
 }
 
 class ProyectoVialApp extends StatelessWidget {
@@ -18,7 +31,10 @@ class ProyectoVialApp extends StatelessWidget {
         fontFamily: 'Inter',
       ),
       initialRoute: '/portada',
-      routes: appRoutes,
+      routes: {
+        ...appRoutes,
+        '/menu': (context) => const MenuPage(), // 👈 Paso 3: Ruta a nuevo menú
+      },
     );
   }
 }
