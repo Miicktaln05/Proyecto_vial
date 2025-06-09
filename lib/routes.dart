@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 // Pantallas principales
 import 'pages/portada.dart';
-import 'pages/menu.dart';
 import 'pages/introduccion.dart';
 import 'pages/antecedentes.dart';
 import 'pages/planos.dart';
 import 'pages/perth.dart';
-import 'pages/costos.dart'; 
+import 'pages/costos.dart';
 import 'pages/introduccion_antecedentes.dart';
 import 'pages/contexto_general.dart';
 import 'pages/justificacion.dart';
@@ -21,11 +21,18 @@ import 'pages/estadisticas_page.dart';
 import 'pages/calculos_page.dart';
 import 'pages/resultado_page.dart';
 import 'pages/procedimiento_page.dart';
+import 'pages/financiero_page.dart';
 
-final Map<String, WidgetBuilder> appRoutes = 
-{
+// MATERIA
+import 'pages/materia_page.dart';
+import 'pages/estructuras_page.dart';
+import 'pages/caminos_page.dart';
+import 'pages/curvas_page.dart';
+import 'pages/calculo_columnas_page.dart';
+import 'pages/calculo_zapatas_page.dart';
+
+final Map<String, WidgetBuilder> appRoutes = {
   '/portada': (context) => const PortadaPage(),
-  '/menu': (context) => const MenuPage(),
   '/introduccion': (context) => const IntroduccionPage(),
   '/antecedentes': (context) => const AntecedentesPage(),
   '/planos': (context) => const PlanosPage(),
@@ -42,7 +49,15 @@ final Map<String, WidgetBuilder> appRoutes =
   '/historial': (context) => const HistorialPage(),
   '/estadisticas': (context) => const EstadisticasPage(),
   '/calculos': (context) => const CalculosPage(),
-  '/resultado': (_) => const ResultadoPage(),
-  '/procedimiento': (_) => const ProcedimientoPage(),
-};
+  '/resultado': (context) => const ResultadoPage(),
+  '/procedimiento': (context) => const ProcedimientoPage(),
+  '/financiero': (context) => const FinancieroPage(),
 
+  // MATERIA
+  '/materia': (context) => const MateriaPage(),
+  '/estructuras': (context) => const EstructurasPage(),
+  '/caminos': (context) => const CaminosPage(),
+  '/curvas': (context) => const CurvasPage(),
+  '/calculo_columnas': (context) => const CalculoColumnasPage(),
+  '/calculo_zapatas': (context) => const CalculoZapatasPage(),
+};

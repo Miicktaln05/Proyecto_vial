@@ -3,8 +3,14 @@ import 'package:provider/provider.dart';
 import 'routes.dart';
 import 'controllers/historial_controller.dart';
 import 'controllers/vehiculo_provider.dart';
-// 👇 Paso 3: Importamos la pantalla del menú principal
-import 'pages/menu.dart';
+
+// Importa los modelos y páginas que necesitan argumentos
+import 'models/resultado_zapata.dart';
+import 'models/resultado_columna.dart';
+import 'pages/resultado_zapata_page.dart';
+import 'pages/procedimiento_zapata_page.dart';
+import 'pages/resultado_columna_page.dart';
+import 'pages/procedimiento_columna_page.dart';
 
 void main() {
   runApp(
@@ -33,7 +39,39 @@ class ProyectoVialApp extends StatelessWidget {
       initialRoute: '/portada',
       routes: {
         ...appRoutes,
-        '/menu': (context) => const MenuPage(), // 👈 Paso 3: Ruta a nuevo menú
+      },
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/resultado_zapata':
+            final resultado = settings.arguments as ResultadoZapata;
+            return MaterialPageRoute(
+              builder: (_) => ResultadoZapataPage(resultado: resultado),
+            );
+          case '/procedimiento_zapata':
+            final resultado = settings.arguments as ResultadoZapata;
+            return MaterialPageRoute(
+              builder: (_) => ProcedimientoZapataPage(
+                resultado: resultado,
+                carga: resultado.carga,
+              ),
+            );
+          case '/resultado_columna':
+            final resultado = settings.arguments as ResultadoColumna;
+            return MaterialPageRoute(
+              builder: (_) => ResultadoColumnaPage(resultado: resultado),
+            );
+          case '/procedimiento_columna':
+            final resultado = settings.arguments as ResultadoColumna;
+            return MaterialPageRoute(
+              builder: (_) => ProcedimientoColumnaPage(
+                resultado: resultado,
+                carga: resultado.carga,
+                columnas: resultado.columnas,
+              ),
+            );
+          default:
+            return null;
+        }
       },
     );
   }

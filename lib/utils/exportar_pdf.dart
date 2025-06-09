@@ -25,9 +25,9 @@ class ExportadorPDF {
               pw.SizedBox(height: 16),
               pw.Text('📅 Fecha: $fecha'),
               pw.Text('📌 Vehículo: $tipoVehiculo'),
-              pw.Text('🛣️ Pavimento: $tipoPavimento'),
+              pw.Text('🛣 Pavimento: $tipoPavimento'),
               pw.Text('🔧 Ejes: $ejes'),
-              pw.Text('⚖️ Peso por eje: ${peso.toStringAsFixed(2)} kg'),
+              pw.Text('⚖ Peso por eje: ${peso.toStringAsFixed(2)} kg'),
               pw.Text('🚚 Viajes: $viajes'),
               pw.SizedBox(height: 12),
               pw.Text('✅ Resultado: ${resultado.toStringAsFixed(2)} ejes equivalentes',
@@ -35,6 +35,29 @@ class ExportadorPDF {
             ],
           );
         },
+      ),
+    );
+
+    return pdf.save();
+  }
+
+  static Future<Uint8List> generarPDFGenerico({
+    required String titulo,
+    required List<String> contenido,
+  }) async {
+    final pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) => pw.Column(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            pw.Text(titulo,
+                style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
+            pw.SizedBox(height: 16),
+            ...contenido.map((linea) => pw.Text(linea)),
+          ],
+        ),
       ),
     );
 
